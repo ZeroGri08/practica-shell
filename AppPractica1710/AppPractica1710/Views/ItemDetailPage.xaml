@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage 
+    xmlns="http://xamarin.com/schemas/2014/forms" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+    xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+x:Class="AppPractica1710.Views.ItemDetailPage"
+    Title="{Binding Title}"
+    ios:Page.UseSafeArea="true"
+    Visual="Material">
+    <ContentPage.Content>
+        <TableView Intent="Form">
+            <TableRoot>
+                <TableSection Title="Basic Info">
+                    <EntryCell Label="Name" Text="{Binding ToDoItem.Name}"/>
+                    <EntryCell Label="Category" Text="{Binding ToDoItem.Category}" IsEnabled="{Binding IsNew}" />
+                    <SwitchCell Text="Is Complete" On="{Binding ToDoItem.Completed}"/>
+                </TableSection>
+                <TableSection Title="Details">
+                    <ViewCell>
+                        <StackLayout HeightRequest="200">
+                            <Editor Text="{Binding ToDoItem.Description}" HeightRequest="200" MinimumHeightRequest="200" />
+                        </StackLayout>
+                    </ViewCell>
+                </TableSection>
+            </TableRoot>
+        </TableView>
+    </ContentPage.Content>
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Save" Command="{Binding SaveCommand}" />
+        <ToolbarItem Text="Cancel" Clicked="Handle_CancelClicked" />
+    </ContentPage.ToolbarItems>
+</ContentPage>
